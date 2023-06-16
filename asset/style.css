@@ -1,0 +1,44 @@
+$fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
+$lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_STRING);
+$about = filter_input(INPUT_POST, 'about', FILTER_SANITIZE_STRING);
+$number = filter_input(INPUT_POST, 'number', FILTER_SANITIZE_STRING);
+$address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
+$cemail = filter_input(INPUT_POST, 'cemail', FILTER_SANITIZE_EMAIL);
+$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+$role = filter_input(INPUT_POST, 'role', FILTER_SANITIZE_STRING);
+$tp1 = filter_input(INPUT_POST, 'tp1', FILTER_SANITIZE_STRING);
+$tp2 = filter_input(INPUT_POST, 'tp2', FILTER_SANITIZE_STRING);
+$tp3 = filter_input(INPUT_POST, 'tp3', FILTER_SANITIZE_STRING);
+$pr1 = filter_input(INPUT_POST, 'pr1', FILTER_SANITIZE_STRING);
+$pr2 = filter_input(INPUT_POST, 'pr2', FILTER_SANITIZE_STRING);
+$pr3 = filter_input(INPUT_POST, 'pr3', FILTER_SANITIZE_STRING);
+$te1 = filter_input(INPUT_POST, 'te1', FILTER_SANITIZE_STRING);
+$te2 = filter_input(INPUT_POST, 'te2', FILTER_SANITIZE_STRING);
+$te3 = filter_input(INPUT_POST, 'te3', FILTER_SANITIZE_STRING);
+$ep1 = filter_input(INPUT_POST, 'ep1', FILTER_SANITIZE_STRING);
+$ep2 = filter_input(INPUT_POST, 'ep2', FILTER_SANITIZE_STRING);
+$ep3 = filter_input(INPUT_POST, 'ep3', FILTER_SANITIZE_STRING)
+    $file = $_FILES['picture'];
+    $fullname = $fname . ' ' . $lname;
+    $spname = $fname . '_' . $lname;
+    $folder_name = $spname;
+    if (file_exists($folder_name) && is_dir($folder_name)) {
+
+
+    mkdir($spname);
+
+    // Get the file extension
+    $file_extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+    // Generate the file name for the image
+    $image_name = 'profile.' . $file_extension;
+
+    // Move the file to the folder
+    move_uploaded_file($file['tmp_name'], $folder_name . '/' . $image_name);
+
+  $html = '<!doctypehtml><html lang=en><link href=https://checkme.rf.gd/asset/mdb.min.css rel=stylesheet><meta charset=UTF-8><meta content="width=device-width,initial-scale=1"name=viewport><meta content="ie=edge"http-equiv=X-UA-Compatible><title>' . $fullname . ' | Portfolio</title><style>.timeline{display:block;flex-direction:row;align-items:center}.timeline-card{position:relative}.timeline-card-before{content:"";display:inline-block;position:absolute;background-color:#fff;border-radius:100%;width:24px;height:24px;top:16px;left:-12px;border:5px solid;z-index:2;color:#1f2937}.timeline-body{border-left:2px solid #e6e9ed}.text-muted{color:#757575!important;font-size:1rem}.h5{font-size:1.25rem}.timeline-card::before{color:#1f2937;content:"";display:inline-block;position:absolute;background-color:#fff;border-radius:100%;width:24px;height:24px;top:16px;left:-12px;border:5px solid;z-index:2}</style><link href=https://cdn.jsdelivr.net/npm/tailwindcss@2.2.9/dist/tailwind.min.css rel=stylesheet><link href="https://fonts.googleapis.com/css?family=Roboto&display=swap"rel=stylesheet><link href=style.css rel=stylesheet><nav class="bg-gray-800 py-4"><div class="px-4 lg:px-8 mx-auto sm:px-6"><div class="flex items-center h-16 justify-between"><div class="flex items-center"><a class="font-bold text-xl text-white"href=#>Port Labs</a></div><div class="hidden md:block"><ul class="flex items-baseline ml-10"><li class=mx-4><a class="hover:text-white text-gray-300"href=#home>Home</a><li class=mx-4><a class="hover:text-white text-gray-300"href=#about>About</a><li class=mx-4><a class="hover:text-white text-gray-300"href=#projects>Projects</a><li class=mx-4><a class="hover:text-white text-gray-300"href=#experience>Experience</a><li class=mx-4><a class="hover:text-white text-gray-300"href=#contact>Contact</a></ul></div></div></div></nav><section class="py-24 bg-gray-100"id=home><div class="mx-auto container px-6"><h1 class="text-gray-800 font-bold text-center mb-8 text-5xl">Welcome to Abdessattar Portfolio</h1><div class="flex justify-center"><img class=rounded-full src=abdessattar.png></div><h2 class="text-gray-800 font-bold text-center mt-8 text-2xl">I am' . $fullname .'</h2><p class="mt-4 text-gray-600 text-center text-xl">Web Developer<p class="text-gray-800 text-center mt-4 text-xl">' . $number . ' | ' . $email . ' | ' . $address . '</div></section><section class="bg-white py-24"id=about><div class="mx-auto container px-6"><h1 class="text-gray-800 font-bold text-center mb-8 text-5xl">About Me</h1><div class="flex items-center justify-center"><img class="rounded-full h-48"src="' . $image_name . '"><div class=ml-8><h2 class="text-gray-800 font-bold text-2xl">' . $fullname . '</h2><p class="text-gray-600 text-xl">' . $role . '</div></div><div class="text-gray-800 text-xl mt-8"><p>' . $about . '</div></div></section><section class="py-24 bg-gray-100"id=projects><div class="mx-auto container px-6"><h1 class="text-gray-800 font-bold text-center mb-8 text-5xl">My Projects</h1><div class="gap-8 grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2"><div class="bg-white overflow-hidden rounded-lg shadow-lg"><img class=object-cover src=https://portlab.netlify.app/pr1.jpg height=124px width=340px><div class=p-6><h2 class="text-gray-800 font-bold text-xl">' . $tp1 .'</h2><p class="mt-4 text-gray-600">' . $pr1 . '</div></div><div class="bg-white overflow-hidden rounded-lg shadow-lg"><img class=object-cover src=https://portlab.netlify.app/pr1.jpg height=124px width=340px><div class=p-6><h2 class="text-gray-800 font-bold text-xl">' . $tp2 .'</h2><p class="mt-4 text-gray-600">' . $pr2 .'</div></div><div class="bg-white overflow-hidden rounded-lg shadow-lg"><img class=object-cover src=https://portlab.netlify.app/pr1.jpg height=124px width=340px><div class=p-6><h2 class="text-gray-800 font-bold text-xl">' . $tp3 .'</h2><p class="mt-4 text-gray-600">' . $pr3 .'</div></div></div></div></section><div class="bg-white py-24 p-5"id=experience><div class=work-experience-section><h2 class="fw-light h2 mb-4">Work Experience</h2><div class=timeline><div class="timeline-card timeline-card-info"><div class="px-4 pt-3 timeline-head"><div class=h5>' . $te1 .'</div></div><div class="px-4 pb-4 timeline-body"><div>' . $ep1.'</div></div></div><div class="timeline-card timeline-card-info aos-animate aos-init"data-aos=fade-in data-aos-delay=200><div class="px-4 pt-3 timeline-head"><div class=h5>' . $te2 .'</div></div><div class="px-4 pb-4 timeline-body"><div>' . $ep2 .'</div></div></div><div class="timeline-card timeline-card-info aos-animate aos-init"data-aos=fade-in data-aos-delay=400><div class="px-4 pt-3 timeline-head"><div class=h5>' . $te3 .'</div></div><div class="px-4 pb-4 timeline-body">' . $ep3 .'</div></div></div></div></div><section class="py-24 bg-gray-100"id=contact><div class="mx-auto container px-6"><h1 class="text-gray-800 font-bold text-center mb-8 text-5xl">Contact Me</h1><div class="mx-auto max-w-lg"><form action><div class="flex flex-wrap mb-6"><div class="w-full px-3"><label class="text-gray-800 font-bold block mb-2"for=name>Name</label> <input class="text-gray-800 bg-gray-200 border border-gray-200 focus:bg-white focus:border-gray-500 focus:outline-none leading-tight mb-3 px-4 py-3 rounded w-full"id=name placeholder="Your name"></div></div><div class="flex flex-wrap mb-6"><div class="w-full px-3"><label class="text-gray-800 font-bold block mb-2"for=email>Email Address</label> <input class="text-gray-800 bg-gray-200 border border-gray-200 focus:bg-white focus:border-gray-500 focus:outline-none leading-tight mb-3 px-4 py-3 rounded w-full"id=email placeholder="Your email address"type=email></div></div><div class="flex flex-wrap mb-6"><div class="w-full px-3"><label class="text-gray-800 font-bold block mb-2"for=message>Message</label> <textarea class="text-gray-800 bg-gray-200 border border-gray-200 focus:bg-white focus:border-gray-500 focus:outline-none leading-tight mb-3 px-4 py-3 rounded w-full"id=message placeholder="Your message"rows=6></textarea></div></div><div class="flex flex-wrap"><div class="w-full px-3"><button class="font-bold text-white bg-gray-800 focus:outline-none focus:shadow-outline hover:bg-gray-700 px-4 py-2 rounded"type=submit>Send Message</button></div></div></form></div></div></section><footer class="bg-gray-800 py-4"><div class="px-4 lg:px-8 mx-auto sm:px-6"><div class="text-gray-500 text-center text-sm">© 2023 My Portfolio. All rights reserved.</div></div></footer><script src=https://code.jquery.com/jquery-3.6.0.min.js></script></body></html>';
+        file_put_contents($folder_name . '/index.html', $html);
+        echo 'https://portlab.glitch.me/'. $folder_name;
+   } else {
+  echo "failed";
+};
