@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apply for Net Neurons Team</title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="asset/bootstrap.css">
+  <script src='asset/alert.js'></script>
+  <style>
+  body.swal2-shown>[aria-hidden="true"] {
+      transition: 0.1s filter;
+      filter: blur(10px);
+    }
+
+    .cu h2::after {
+      content: '...';
+      animation: dots 1s infinite;
+    }
+
+    @keyframes dots {
+      0% {
+        opacity: 0;
+      }
+
+      33% {
+        opacity: 0.5;
+      }
+
+      66% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+  </style>
+</head>
+<body>
+	<div class="container my-5">
+		<div class="row justify-content-center">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h3 class="text-center">Join Our Team of Developers</h3>
+					</div>
+					<div class="card-body">
+						<form>
+							<div class="mb-3">
+								<label for="name" class="form-label">Name</label>
+								<input type="text" class="form-control" id="name" placeholder="Enter your name" required="true">
+							</div>
+							<div class="mb-3">
+								<label for="email" class="form-label">Email address</label>
+								<input type="email" class="form-control" id="email" placeholder="Enter your email" required="true">
+							</div>
+							<div class="mb-3">
+								<label for="message" class="form-label">Message</label>
+								<textarea class="form-control" id="message" rows="3" placeholder="Enter why do you want to join us..." required="true"></textarea>
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  <script>
+
+    function success(){
+      Swal.fire({
+        icon:'success',
+        title:'Success',
+        text:'Your apply to Net Neurons Team has been submitted successfully.'
+      })
+    };
+    function error(){
+      Swal.fire({
+        icon:'error',
+        title:'Opps... An Error Occured',
+        text:'An Error Occured While Submitting The Apply. If The Error Persist, Email Us At elyagoubiabdessattar@gmail.com'
+      })
+    };
+  document.querySelector('form').onsubmit = function(e){
+    e.preventDefault();
+    Swal.fire({
+          title: 'Submitting',
+          icon: 'info',
+          showConfirmButton: false,
+          allowOutsideClick: false,
+          customClass: 'cu'
+        });
+      var name = document.querySelectorAll('input')[0].value;
+  var email = document.querySelectorAll('input')[1].value;
+  var message = document.querySelector('textarea').value;
+    function check(d){
+    if(d.success === 'true'){
+        success()
+    }else{
+        error()
+    }
+};
+    fetch("https://formsubmit.co/ajax/elyagoubiabdessattar@gmail.com", {
+    method: "POST",
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+    })
+})
+    .then(response => response.json())
+    .then(data => check(data))
+    .catch(err => error());
+  };
+
+     function pro(){
+    console.log("%cJoin our team of developers! %cWe\"re looking for talented programmers who love to code. %cClick here to apply: %chttps://portfoliyo.glitch.me/apply.html", "background-color: #000; color: #00FF00; font-size: 33px; font-weight: bold; text-shadow: 1px 1px 1px #00FF00, 0px 0px 2px #00FF00, 0px 0px 2px #00FF00;", "color: #FFF; font-size: 20px; font-weight: bold;", "color: #00FF00; font-size: 20px; font-weight: bold;", "color: #00FF00; font-size: 20px; font-weight: bold; text-decoration: underline;");
+  };
+setInterval(pro,5000);
+  </script>
+  </body>
+</html>
